@@ -9,11 +9,16 @@
 <script>
 import Header from "@/components/layout/header/Header";
 import Footer from "@/components/layout/footer/Footer";
+import { APP_NAME } from "@/constants";
+
 export default {
 	head() {
 		return {
 			title: this.title,
 		}
+	},
+	meta: {
+		title: 'title'
 	},
 	data: () => ({
 		title: ''
@@ -22,7 +27,8 @@ export default {
 		Header, Footer
 	},
 	mounted() {
-		this.title = this.$route.meta.title;
+		const routeName = this.$route.name.toLowerCase().charAt(0).toUpperCase() + this.$route.name.toLowerCase().slice(1)
+		this.title = APP_NAME + ' | ' + routeName;
 	}
 }
 </script>
